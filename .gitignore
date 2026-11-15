@@ -1,0 +1,14 @@
+__pycache__/
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Replays and the tables made from them are the user's own, never part of this repository.
+*.dem
+*.dem.bz2
+*.dem.part
+*.parquet
+*.match.json
+.claude/
+*.jsonl

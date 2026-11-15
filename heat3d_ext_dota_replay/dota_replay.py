@@ -3,10 +3,9 @@ Dota 2 replays (.dem): every hero's track, who played it, and what happened wher
 
 Dota 2 keeps a replay of every public match on Valve's servers for a few weeks.
 The client saves the ones a player downloads (Watch > Replays, or a match's
-"Download replay") to `<Dota>/game/dota/replays/<match id>.dem`; anyone can
-fetch one from Valve's replay CDN with the match's cluster and replay salt, which
-OpenDota's API gives for a match id (`fetch_replay`). Replays are not encrypted;
-OpenDota, Stratz and Dotabuff have read them for a decade.
+"Download replay") to `<Dota>/game/dota/replays/<match id>.dem`; the 3DHeat
+Watcher's `dota-replay <match id>` fetches a public one by its id. Replays are
+not encrypted; OpenDota, Stratz and Dotabuff have read them for a decade.
 
 Reading
 -------
@@ -68,12 +67,9 @@ cannot read to the end is converted as far as it goes and marked
 
 from __future__ import annotations
 
-import bz2
 import json
 import math
 import threading
-import urllib.error
-import urllib.request
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable
@@ -87,7 +83,6 @@ CELL_ORIGIN = 16384.0
 CELL_SIZE = 128.0
 #: A Source 2 demo's first eight bytes.
 DEMO_MAGIC = b"PBDEMS2\0"
-OPENDOTA = "https://api.opendota.com/api"
 RADIANT, DIRE = 2, 3
 TEAMS = {RADIANT: "Radiant", DIRE: "Dire"}
 #: One parse at a time may swap gem's parser class (see `_parse_with_sampler`).
@@ -100,116 +95,6 @@ class FormatError(ValueError):
 
 class Missing(RuntimeError):
     """The parser this reader works through is not installed."""
-
-
-# ------------------------------------------------------------------ downloading
-
-
-def _get_json(url: str, timeout: float = 30.0) -> Any:
-    req = urllib.request.Request(url, headers={"User-Agent": "heat3d-watch"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8"))
-
-
-def replay_url(match_id: int, *, api: str = OPENDOTA, get: Callable[[str], Any] = _get_json) -> str:
-    """
-    Where Valve keeps a match's replay: `http://replay<cluster>.valve.net/570/<id>_<salt>.dem.bz2`,
-    with the cluster and salt from OpenDota's `/matches/<id>`.
-    """
-    data = get(f"{api}/matches/{int(match_id)}")
-    if not isinstance(data, dict) or data.get("error"):
-        raise LookupError(f"OpenDota does not know match {match_id}: {data.get('error') if isinstance(data, dict) else data}")
-    if data.get("replay_url"):
-        return str(data["replay_url"])
-    cluster, salt = data.get("cluster"), data.get("replay_salt")
-    if not cluster or not salt:
-        raise LookupError(
-            f"OpenDota has no replay salt for match {match_id} yet; ask it to fetch the match with "
-            f"`curl -X POST {api}/request/{int(match_id)}` and try again in a few minutes"
-        )
-    return f"http://replay{int(cluster)}.valve.net/570/{int(match_id)}_{int(salt)}.dem.bz2"
-
-
-class _Raw:
-    """A replay served uncompressed: written as it comes."""
-
-    eof = None
-
-    @staticmethod
-    def decompress(chunk: bytes) -> bytes:
-        return chunk
-
-
-def _decompressor(head: bytes, url: str) -> Any:
-    """
-    The replay's compression, from its first bytes rather than its name: the
-    CDN's files are all called `.dem.bz2`, but newer ones are Zstandard.
-    """
-    if head.startswith(b"BZh"):
-        return bz2.BZ2Decompressor()
-    if head.startswith(b"\x28\xb5\x2f\xfd"):
-        try:
-            import zstandard
-        except ImportError as e:
-            raise Missing("this replay is Zstandard-compressed: pip install zstandard (gem-dota brings it)") from e
-        return zstandard.ZstdDecompressor().decompressobj()
-    if head.startswith(DEMO_MAGIC):
-        return _Raw()
-    raise FormatError(f"{url} is neither a demo nor a compressed one (starts {head[:8].hex()})")
-
-
-def fetch_replay(
-    match_id: int,
-    folder: str | Path,
-    *,
-    api: str = OPENDOTA,
-    get: Callable[[str], Any] = _get_json,
-    opener: Callable[[str], Any] | None = None,
-    progress: Callable[[int], None] | None = None,
-) -> Path:
-    """
-    A public match's replay into `folder` as `<match id>.dem`, decompressed as it
-    downloads. An existing file is kept. Valve deletes replays after some weeks;
-    a match older than that is gone (the CDN answers 404).
-    """
-    folder = Path(folder)
-    folder.mkdir(parents=True, exist_ok=True)
-    out = folder / f"{int(match_id)}.dem"
-    if out.is_file() and out.stat().st_size > 0:
-        return out
-    url = replay_url(match_id, api=api, get=get)
-    part = out.with_suffix(".dem.part")
-    open_url = opener or (lambda u: urllib.request.urlopen(
-        urllib.request.Request(u, headers={"User-Agent": "heat3d-watch"}), timeout=60))
-    try:
-        r = open_url(url)
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            raise LookupError(f"Valve no longer has the replay of match {match_id} ({url})") from e
-        raise
-    got = 0
-    try:
-        with r, part.open("wb") as f:
-            chunk = r.read(1 << 20)
-            unpack = _decompressor(chunk[:8], url)
-            while chunk:
-                got += len(chunk)
-                f.write(unpack.decompress(chunk))
-                if progress:
-                    progress(got)
-                chunk = r.read(1 << 20)
-            if hasattr(unpack, "flush"):
-                f.write(unpack.flush())
-        if getattr(unpack, "eof", True) is False:
-            raise OSError(f"the download of {url} stopped early")
-        with part.open("rb") as f:
-            if f.read(8) != DEMO_MAGIC:
-                raise FormatError(f"{url} is not a Source 2 demo")
-        part.replace(out)
-    finally:
-        if part.exists():
-            part.unlink()
-    return out
 
 
 # ------------------------------------------------------------------ what a replay holds
@@ -1245,31 +1130,3 @@ def write(replay: Replay, folder: str | Path) -> tuple[Path, Path]:
 def convert(path: str | Path, folder: str | Path, hz: float = HZ) -> tuple[Path, Path]:
     """One replay into `folder`: read, with everything else it holds kept beside (`dota_keep`), then written."""
     return write(read(path, hz, keep=folder), folder)
-
-
-def main(argv: list[str] | None = None) -> int:
-    """
-    `python -m heat3d_watch.decoders.dota_replay <replay.dem> -o <folder>`: one
-    replay converted in a process of its own. The watcher runs it so, which
-    keeps the parse's memory (about a gigabyte for a long match) out of its own.
-    """
-    import argparse
-    import sys
-
-    ap = argparse.ArgumentParser(prog="heat3d_watch.decoders.dota_replay")
-    ap.add_argument("replay")
-    ap.add_argument("-o", "--out", required=True)
-    ap.add_argument("--hz", type=float, default=HZ)
-    args = ap.parse_args(argv)
-    try:
-        data, doc = convert(args.replay, args.out, args.hz)
-    except (FormatError, Missing) as e:
-        print(f"{args.replay}: {e}", file=sys.stderr)
-        return 2
-    print(data)
-    print(doc)
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
