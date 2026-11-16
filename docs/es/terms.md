@@ -3,7 +3,7 @@ title: "Condiciones y licencia"
 nav_order: 8
 lang: "es"
 source: terms.md
-source_hash: "59d062678c54"
+source_hash: "46ff3a8c7213"
 nav_exclude: true
 search_exclude: true
 ---
@@ -11,12 +11,13 @@ search_exclude: true
 
 ## Las repeticiones de Valve {#valves-replays}
 
-Dota 2 y sus repeticiones son de Valve, que no respalda este proyecto. Esta
-herramienta no incluye nada del juego y no habla con ningún servidor: lee archivos de repetición en
-tu equipo - los que el cliente de Dota 2 guardó para ti, o públicos que descargaste -
-fuera del juego, y no cambia nada en él. Las repeticiones de Dota 2 no están cifradas; OpenDota, Stratz y Dotabuff las leen desde hace una década. Las tablas que escribe son tuyas para verlas; usar la herramienta es decisión tuya, bajo las condiciones que aceptaste para Dota 2 y Steam.
+3DHeat Dota Replay no está afiliado a Valve ni respaldado por Valve. Dota 2 y los nombres y marcas relacionados pertenecen a sus propietarios. Esta herramienta no incluye nada del juego y no habla con ningún servidor: lee archivos de repetición en tu equipo - los que el cliente de Dota 2 guardó para ti, o públicos que descargaste - fuera del juego, y no cambia nada en él. Las repeticiones de Dota 2 no están cifradas. Las tablas que escribe se quedan en tu equipo.
 
-Por eso es un paquete aparte: si Valve algún día pide que se retire, se retira solo, y el visor, el Watcher y las demás herramientas se quedan.
+## Un proyecto propio {#its-own-project}
+
+Cada lector de un juego es un pequeño proyecto propio, con su propio archivo de licencia, sus versiones y su gestor de incidencias, así que puede instalarse, actualizarse, mantenerse (o retirarse a petición de un titular de derechos) por sí solo, sin afectar al visor ni a las demás herramientas.
+
+Titulares de derechos: abran una incidencia en [3DHeat-Ext-DotaReplay/issues](https://github.com/Holdi601/3DHeat-Ext-DotaReplay/issues); respondemos con rapidez y retiramos cualquier cosa que se nos pida.
 
 ## gem-dota {#gem-dota}
 

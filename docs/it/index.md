@@ -3,7 +3,7 @@ title: Home
 nav_order: 1
 lang: "it"
 source: index.md
-source_hash: "df20c820922e"
+source_hash: "ec2b5e26aa1a"
 nav_exclude: true
 search_exclude: true
 permalink: /it/
@@ -21,6 +21,11 @@ e replay sulla mappa: dove un eroe ha passato la partita, dove c'erano i combatt
 **Esempio:** `heat3d-dota-replay convert 7123456789.dem -o tables` ->
 `tables/7123456789.parquet`, la tabella da aprire nel visualizzatore, con la partita e le
 tabelle secondarie accanto.
+
+**Un progetto a sé:** Ogni lettore di un gioco è un piccolo progetto a sé, con il proprio file di
+licenza, i propri rilasci e il proprio tracker delle issue, così può essere installato, aggiornato,
+mantenuto - o ritirato su richiesta di un titolare dei diritti - da solo, senza toccare il
+visualizzatore o gli altri strumenti.
 
 ## Avvio rapido {#quick-start}
 
@@ -46,7 +51,7 @@ visualizzatore con **File…** o trascinandolo sulla finestra ([Conversione](con
 | [Prima di iniziare](before-you-start.md) | Python, un terminale, una prima esecuzione |
 | [Trovare i replay: list](list.md) | dove Dota 2 salva i replay, come ottenerne uno, cosa stampa `list` |
 | [Conversione: convert](convert.md) | ogni opzione, le tabelle colonna per colonna, come caricarle, come sono state verificate |
-| [Termini e licenza](terms.md) | i replay di Valve, la licenza di gem-dota, perché è un pacchetto separato |
+| [Termini e licenza](terms.md) | i replay di Valve, la licenza di gem-dota, questo strumento come progetto a sé |
 | [Riferimento dei comandi](../cli-reference.md) | ogni opzione, generata dal codice |
 | [Manutenzione di questa documentazione](maintaining.md) | la lista di controllo per ogni rilascio |
 

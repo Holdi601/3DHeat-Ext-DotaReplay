@@ -3,7 +3,7 @@ title: Startseite
 nav_order: 1
 lang: "de"
 source: index.md
-source_hash: "df20c820922e"
+source_hash: "ec2b5e26aa1a"
 nav_exclude: true
 search_exclude: true
 permalink: /de/
@@ -22,6 +22,11 @@ Kämpfe waren, wohin die Wards gingen.
 **Beispiel:** `heat3d-dota-replay convert 7123456789.dem -o tables` ->
 `tables/7123456789.parquet`, die Tabelle zum Öffnen im Viewer, mit dem Match und den
 Nebentabellen daneben.
+
+**Ein eigenes Projekt:** Jeder Spiel-Leser ist ein eigenes kleines Projekt mit eigener Lizenzdatei,
+eigenen Releases und eigenem Issue-Tracker. So lässt er sich für sich allein installieren,
+aktualisieren, pflegen – oder auf Wunsch eines Rechteinhabers zurückziehen –, ohne den Viewer oder
+die anderen Werkzeuge zu berühren.
 
 ## Schnellstart {#quick-start}
 
@@ -48,7 +53,7 @@ das Fenster ziehst ([Konvertieren](convert.md#loading-it-in-the-viewer)).
 | [Bevor du anfängst](before-you-start.md) | Python, ein Terminal, ein erster Lauf |
 | [Replays finden: list](list.md) | wo Dota 2 Replays speichert, ein Replay holen, was `list` ausgibt |
 | [Konvertieren: convert](convert.md) | jede Option, die Tabellen Spalte für Spalte, Laden im Viewer, wie es geprüft wurde |
-| [Begriffe und Lizenz](terms.md) | Valves Replays, die Lizenz von gem-dota, warum dies ein eigenes Paket ist |
+| [Begriffe und Lizenz](terms.md) | Valves Replays, die Lizenz von gem-dota, dieses Werkzeug als eigenes Projekt |
 | [Befehlsreferenz](../cli-reference.md) | jede Option, aus dem Code erzeugt |
 | [Diese Dokumentation pflegen](maintaining.md) | die Checkliste für Releases |
 

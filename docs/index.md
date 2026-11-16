@@ -19,6 +19,11 @@ were, where the wards went.
 `tables/7123456789.parquet`, the table to open in the viewer, with the match
 and the side tables beside it.
 
+**Its own project:** Each game reader is its own small project with its own
+licence file, releases and issue tracker, so it can be installed, updated,
+maintained - or withdrawn on a rights holder's request - on its own, without
+affecting the viewer or the other tools.
+
 ## Quick start
 
 New to the command line? Read [Before you start](before-you-start.md) first.
@@ -44,7 +49,7 @@ or by dropping it on the window ([Converting](convert.md#loading-it-in-the-viewe
 | [Before you start](before-you-start.md) | Python, a terminal, a first run |
 | [Finding replays: list](list.md) | where Dota 2 saves replays, getting one, what `list` prints |
 | [Converting: convert](convert.md) | every option, the tables column by column, loading them, how it was checked |
-| [Terms and licence](terms.md) | Valve's replays, gem-dota's licence, why this is a separate package |
+| [Terms and licence](terms.md) | Valve's replays, gem-dota's licence, this tool as its own project |
 | [Command reference](cli-reference.md) | every option, generated from the code |
 | [Maintaining these docs](maintaining.md) | the release checklist |
 

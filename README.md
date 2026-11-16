@@ -17,9 +17,10 @@ fights happened, where wards went.
 a page per command with step-by-step use and example output. Part of
 [3DHeat](https://github.com/Holdi601/3DHeat) ([documentation](https://holdi601.github.io/3DHeat/)).
 
-This tool is kept outside the 3DHeat tools on purpose: it reads Valve's replay
-files. If it ever has to go, nothing else goes with it. The tables it writes
-stay on your machine.
+Each game reader is its own small project with its own licence file, releases
+and issue tracker, so it can be installed, updated, maintained - or withdrawn on
+a rights holder's request - on its own, without affecting the viewer or the
+other tools. The tables this tool writes stay on your machine.
 
 ## Install
 
@@ -86,10 +87,15 @@ converts it with this tool.
 
 ## Terms
 
-Dota 2 and its replays belong to Valve, who do not endorse this project. The
-tool reads replay files on your machine and talks to no server. Valve's replays
-are not encrypted; the reading is done by gem-dota (MIT), a published parser
-([Terms and licence](https://holdi601.github.io/3DHeat-Ext-DotaReplay/terms.html)).
+3DHeat Dota Replay is not affiliated with or endorsed by Valve. Dota 2 and
+related names and trademarks belong to their owners. The tool reads replay files
+on your machine and talks to no server. Valve's replays are not encrypted; the
+reading is done by gem-dota (MIT), a published parser ([Terms and
+licence](https://holdi601.github.io/3DHeat-Ext-DotaReplay/terms.html)).
+
+Rights holders: open an issue at
+[3DHeat-Ext-DotaReplay/issues](https://github.com/Holdi601/3DHeat-Ext-DotaReplay/issues) -
+we respond quickly and remove anything on request.
 
 ## Tests
 

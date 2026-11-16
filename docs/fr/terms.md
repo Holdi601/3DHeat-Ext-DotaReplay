@@ -3,7 +3,7 @@ title: "Conditions et licence"
 nav_order: 8
 lang: "fr"
 source: terms.md
-source_hash: "59d062678c54"
+source_hash: "46ff3a8c7213"
 nav_exclude: true
 search_exclude: true
 ---
@@ -11,15 +11,23 @@ search_exclude: true
 
 ## Les replays de Valve {#valves-replays}
 
-Dota 2 et ses replays appartiennent à Valve, qui ne cautionne pas ce projet. Cet
-outil ne livre rien du jeu et ne parle à aucun serveur : il lit des fichiers de replay sur
-votre machine - ceux que le client Dota 2 a enregistrés pour vous, ou des replays publics
-que vous avez téléchargés - en dehors du jeu, et ne modifie rien dans celui-ci. Les replays de Dota 2 ne sont pas chiffrés : OpenDota, Stratz et Dotabuff les lisent depuis dix ans. Les
-tables qu'il écrit sont à vous pour les voir ; utiliser l'outil est votre décision, selon les
-conditions que vous avez acceptées pour Dota 2 et Steam.
+3DHeat Dota Replay n'est ni affilié à Valve ni approuvé par Valve. Dota 2 et les noms et
+marques associés appartiennent à leurs propriétaires. Cet outil ne livre rien du jeu et ne
+parle à aucun serveur : il lit des fichiers de replay sur votre machine - ceux que le
+client Dota 2 a enregistrés pour vous, ou des replays publics que vous avez téléchargés -
+en dehors du jeu, et ne modifie rien dans celui-ci. Les replays de Dota 2 ne sont pas
+chiffrés. Les tables qu'il écrit restent sur votre machine.
 
-C'est pourquoi c'est un paquet séparé : si Valve demande un jour qu'il disparaisse, il
-disparaît seul, et le visualiseur, le Watcher et les autres outils restent.
+## Un projet à part {#its-own-project}
+
+Chaque lecteur de jeu est un petit projet à part, avec son propre fichier de licence, ses
+propres versions et son propre suivi des tickets : il peut être installé, mis à jour,
+maintenu - ou retiré à la demande d'un ayant droit - seul, sans toucher au visualiseur ni
+aux autres outils.
+
+Ayants droit : ouvrez un ticket sur
+[3DHeat-Ext-DotaReplay/issues](https://github.com/Holdi601/3DHeat-Ext-DotaReplay/issues) -
+nous répondons vite et retirons tout ce qui est demandé.
 
 ## gem-dota {#gem-dota}
 

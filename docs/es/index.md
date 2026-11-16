@@ -3,7 +3,7 @@ title: Inicio
 nav_order: 1
 lang: "es"
 source: index.md
-source_hash: "df20c820922e"
+source_hash: "ec2b5e26aa1a"
 nav_exclude: true
 search_exclude: true
 permalink: /es/
@@ -22,6 +22,8 @@ fueron las peleas, dónde se colocaron los wards.
 **Ejemplo:** `heat3d-dota-replay convert 7123456789.dem -o tables` ->
 `tables/7123456789.parquet`, la tabla para abrir en el visor, con la partida
 y las tablas auxiliares al lado.
+
+**Un proyecto propio:** Cada lector de un juego es un pequeño proyecto propio, con su propio archivo de licencia, sus versiones y su gestor de incidencias, así que puede instalarse, actualizarse, mantenerse (o retirarse a petición de un titular de derechos) por sí solo, sin afectar al visor ni a las demás herramientas.
 
 ## Inicio rápido {#quick-start}
 
@@ -48,7 +50,7 @@ o soltándolo sobre la ventana ([Convertir](convert.md#cargarla-en-el-visor)).
 | [Antes de empezar](before-you-start.md) | Python, una terminal, una primera ejecución |
 | [Encontrar repeticiones: list](list.md) | dónde guarda Dota 2 las repeticiones, cómo conseguir una, qué muestra `list` |
 | [Convertir: convert](convert.md) | cada opción, las tablas columna por columna, cómo cargarlas, cómo se comprobó |
-| [Condiciones y licencia](terms.md) | las repeticiones de Valve, la licencia de gem-dota, por qué es un paquete aparte |
+| [Condiciones y licencia](terms.md) | las repeticiones de Valve, la licencia de gem-dota, esta herramienta como proyecto propio |
 | [Referencia de comandos](../cli-reference.md) | cada opción, generada desde el código |
 | [Mantener estos documentos](maintaining.md) | la lista de comprobación de cada versión |
 

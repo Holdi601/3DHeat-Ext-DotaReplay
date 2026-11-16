@@ -7,16 +7,23 @@ nav_order: 8
 
 ## Valve's replays
 
-Dota 2 and its replays belong to Valve, who do not endorse this project. This
-tool ships nothing of the game and talks to no server: it reads replay files on
-your machine - ones the Dota 2 client saved for you, or public ones you
-downloaded - outside the game, and changes nothing in it. Dota 2 replays are
-not encrypted; OpenDota, Stratz and Dotabuff have read them for a decade. The
-tables it writes are yours to view; using the tool is your decision, under the
-terms you accepted for Dota 2 and Steam.
+3DHeat Dota Replay is not affiliated with or endorsed by Valve. Dota 2 and
+related names and trademarks belong to their owners. This tool ships nothing of
+the game and talks to no server: it reads replay files on your machine - ones
+the Dota 2 client saved for you, or public ones you downloaded - outside the
+game, and changes nothing in it. Dota 2 replays are not encrypted. The tables it
+writes stay on your machine.
 
-That is why it is a separate package: if Valve ever asks for it to go, it
-goes alone, and the viewer, the Watcher and the other tools stay.
+## Its own project
+
+Each game reader is its own small project with its own licence file, releases
+and issue tracker, so it can be installed, updated, maintained - or withdrawn on
+a rights holder's request - on its own, without affecting the viewer or the
+other tools.
+
+Rights holders: open an issue at
+[3DHeat-Ext-DotaReplay/issues](https://github.com/Holdi601/3DHeat-Ext-DotaReplay/issues) -
+we respond quickly and remove anything on request.
 
 ## gem-dota
 

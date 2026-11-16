@@ -14,8 +14,12 @@ licence; each package's own source is what counts, not this file.
 
 ## The replays
 
-Dota 2 belongs to Valve. This repository holds no replay and no table made
-from one; the tool reads the replays on the user's own machine - ones the Dota
-2 client saved, or public ones the user downloaded - and the tables it writes
-stay there. See
-[Terms and licence](https://holdi601.github.io/3DHeat-Ext-DotaReplay/terms.html).
+3DHeat Dota Replay is not affiliated with or endorsed by Valve. Dota 2 and
+related names and trademarks belong to their owners. This repository holds no
+replay and no table made from one; the tool reads the replays on the user's own
+machine - ones the Dota 2 client saved, or public ones the user downloaded - and
+the tables it writes stay there. See [Terms and
+licence](https://holdi601.github.io/3DHeat-Ext-DotaReplay/terms.html). Rights
+holders: open an issue at
+[3DHeat-Ext-DotaReplay/issues](https://github.com/Holdi601/3DHeat-Ext-DotaReplay/issues) -
+we respond quickly and remove anything on request.

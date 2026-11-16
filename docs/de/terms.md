@@ -3,7 +3,7 @@ title: Begriffe und Lizenz
 nav_order: 8
 lang: "de"
 source: terms.md
-source_hash: "59d062678c54"
+source_hash: "46ff3a8c7213"
 nav_exclude: true
 search_exclude: true
 ---
@@ -11,16 +11,23 @@ search_exclude: true
 
 ## Valves Replays {#valves-replays}
 
-Dota 2 und seine Replays gehören Valve, das dieses Projekt nicht unterstützt. Dieses Werkzeug
-liefert nichts vom Spiel mit und spricht mit keinem Server: Es liest Replay-Dateien auf deinem
-Rechner - solche, die der Dota-2-Client für dich gespeichert hat, oder öffentliche, die du
-heruntergeladen hast - außerhalb des Spiels, und verändert nichts darin. Dota-2-Replays sind nicht
-verschlüsselt; OpenDota, Stratz und Dotabuff lesen sie seit zehn Jahren. Die Tabellen, die es
-schreibt, gehören dir zum Ansehen; das Werkzeug zu benutzen ist deine Entscheidung, unter den
-Bedingungen, die du für Dota 2 und Steam akzeptiert hast.
+3DHeat Dota Replay ist weder mit Valve verbunden noch von Valve unterstützt. Dota 2 und zugehörige
+Namen und Marken gehören ihren Inhabern. Dieses Werkzeug liefert nichts vom Spiel mit und spricht
+mit keinem Server: Es liest Replay-Dateien auf deinem Rechner - solche, die der Dota-2-Client für
+dich gespeichert hat, oder öffentliche, die du heruntergeladen hast - außerhalb des Spiels, und
+verändert nichts darin. Dota-2-Replays sind nicht verschlüsselt. Die Tabellen, die es schreibt,
+bleiben auf deinem Rechner.
 
-Deshalb ist es ein eigenes Paket: Falls Valve je verlangt, dass es verschwindet, geht nur dieses
-Paket, und der Viewer, der Watcher und die anderen Werkzeuge bleiben.
+## Ein eigenes Projekt {#its-own-project}
+
+Jeder Spiel-Leser ist ein eigenes kleines Projekt mit eigener Lizenzdatei, eigenen Releases und
+eigenem Issue-Tracker. So lässt er sich für sich allein installieren, aktualisieren, pflegen – oder
+auf Wunsch eines Rechteinhabers zurückziehen –, ohne den Viewer oder die anderen Werkzeuge zu
+berühren.
+
+Rechteinhaber: Eröffnet ein Issue unter
+[3DHeat-Ext-DotaReplay/issues](https://github.com/Holdi601/3DHeat-Ext-DotaReplay/issues) – wir
+antworten schnell und entfernen auf Wunsch alles.
 
 ## gem-dota {#gem-dota}
 
