@@ -22,7 +22,47 @@ and issue tracker, so it can be installed, updated, maintained - or withdrawn on
 a rights holder's request - on its own, without affecting the viewer or the
 other tools. The tables this tool writes stay on your machine.
 
-## Install
+## Quick start for new users
+
+You need: Windows, [Python](https://www.python.org/downloads/) 3.10 or later
+("Add python.exe to PATH" ticked in its installer), and Dota 2 replays: in
+Dota 2, open a match's details and click **Download replay**; it lands in
+`...\steamapps\common\dota 2 beta\game\dota\replays\<match id>.dem`, where the
+tool finds it by itself. No Git is needed.
+
+1. Install the tool (one line, in PowerShell or a command prompt; it also
+   installs gem-dota, the replay parser it reads with):
+
+   ```bash
+   python -m pip install https://github.com/Holdi601/3DHeat-Ext-DotaReplay/archive/refs/tags/v0.1.0.zip
+   ```
+
+2. List the replays Dota 2 saved, then convert them (or name one `.dem`):
+
+   ```bash
+   heat3d-dota-replay list
+   heat3d-dota-replay convert -o tables
+   heat3d-dota-replay convert 7123456789.dem -o tables
+   ```
+
+   Dota 2 outside your Steam libraries: add `--game "<...>\dota 2 beta"`.
+3. The output lands in the `-o` folder, per replay named by its match id:
+   `tables\<match>.parquet` (the table to open), `tables\<match>.match.json`
+   (the match, players, draft, chat) and side tables (`.units`, `.combatlog`,
+   `.packets`, `.entities`, `.strings.parquet`). A long match takes a minute
+   or two and about a gigabyte of memory.
+4. Open it in the [3DHeat viewer](https://github.com/Holdi601/3DHeat#quick-start):
+   download the viewer (**Code -> Download ZIP**, unpack) and double-click
+   `start.bat`; it offers to install [Node.js](https://nodejs.org/) when it is
+   missing and opens Chrome or Edge at `http://127.0.0.1:5273`. There,
+   **Source -> Files...**, pick `<match>.parquet` (or drop it on the Source
+   panel) and click **Load file**. For the Dota 2 map in 3D under it, see
+   [3DHeat-Ext-Dota](https://github.com/Holdi601/3DHeat-Ext-Dota#quick-start-for-new-users).
+
+When a new release is out, the tool says so when it starts and offers to
+update itself (`python -m heat3d_ext_dota_replay.update` does the same).
+
+## Install from a checkout
 
 New to the command line? Read [Before you start](https://holdi601.github.io/3DHeat-Ext-DotaReplay/before-you-start.html) first.
 

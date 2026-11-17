@@ -26,21 +26,36 @@ affecting the viewer or the other tools.
 
 ## Quick start
 
-New to the command line? Read [Before you start](before-you-start.md) first.
-You need Python 3.10 or later and a replay: download one in Dota 2 (a match's
-details, **Download replay**), and it lands in Dota's replays folder. Run these
-in the folder you cloned or unzipped:
+You need Windows, Python 3.10 or later ("Add python.exe to PATH" ticked in its
+installer) and a replay: in Dota 2, open a match's details and click
+**Download replay**; it lands in Dota's replays folder
+(`...\dota 2 beta\game\dota\replays`), where the tool finds it by itself. No
+Git is needed. New to the command line? Read [Before you start](before-you-start.md) first.
 
 ```bash
-python -m pip install -e .                  # installs heat3d-dota-replay and gem-dota
+python -m pip install https://github.com/Holdi601/3DHeat-Ext-DotaReplay/archive/refs/tags/v0.1.0.zip
 heat3d-dota-replay list                     # where Dota 2 saves replays, the ones there
 heat3d-dota-replay convert -o tables        # every replay there, as tables
+heat3d-dota-replay convert 7123456789.dem -o tables   # or one replay
 ```
 
-`list` prints Dota's replays folder and a line per replay; `convert` prints the
-two files it wrote for each, `tables/<match>.parquet` and
-`tables/<match>.match.json`. Open the `.parquet` in the viewer with **Files…**
-or by dropping it on the window ([Converting](convert.md#loading-it-in-the-viewer)).
+pip also installs gem-dota, the replay parser the tool reads with. Dota 2
+outside your Steam libraries: add `--game "<...>\dota 2 beta"`. `list` prints
+Dota's replays folder and a line per replay; `convert` writes, per replay named
+by its match id, `tables\<match>.parquet` (the table to open),
+`tables\<match>.match.json` and the side tables
+([Converting](convert.md)). A long match takes a minute or two and about a
+gigabyte of memory.
+
+Then open the `.parquet` in the [3DHeat viewer](https://github.com/Holdi601/3DHeat#quick-start):
+download it (**Code -> Download ZIP**, unpack), double-click `start.bat` (it
+offers to install Node.js when it is missing and opens `http://127.0.0.1:5273`),
+then **Source -> Files...**, pick the file (or drop it on the Source panel)
+and click **Load file** ([Converting](convert.md#loading-it-in-the-viewer)). The Dota 2 map in 3D under
+it: [3DHeat-Ext-Dota](https://holdi601.github.io/3DHeat-Ext-Dota/).
+
+When a new release is out, the tool says so when it starts and offers to
+update itself (`python -m heat3d_ext_dota_replay.update` does the same).
 
 ## Pages
 

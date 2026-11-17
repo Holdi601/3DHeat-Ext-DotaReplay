@@ -12,6 +12,8 @@
   the replay holds kept whole in `<match>.packets`, `.entities` and
   `.strings.parquet`. Read with gem-dota (MIT). `list` says where Dota 2 saves
   replays; `convert` without a replay converts that folder.
+- Installs with one pip line from the release zip, no Git needed; a pip install knows its version and updates itself with pip when a newer release is out.
+- README: a quick start for new users.
 
 ## Docs
 

@@ -3,7 +3,7 @@ title: Startseite
 nav_order: 1
 lang: "de"
 source: index.md
-source_hash: "ec2b5e26aa1a"
+source_hash: "7ee2763ffd33"
 nav_exclude: true
 search_exclude: true
 permalink: /de/
@@ -30,21 +30,35 @@ die anderen Werkzeuge zu berühren.
 
 ## Schnellstart {#quick-start}
 
-Neu auf der Kommandozeile? Lies zuerst [Bevor du anfängst](before-you-start.md).
-Du brauchst Python 3.10 oder neuer und ein Replay: Lade eines in Dota 2 herunter (die Details
-eines Matches, **Download replay**), es landet im Replay-Ordner von Dota. Führe diese Befehle
-in dem Ordner aus, den du geklont oder entpackt hast:
+Du brauchst Windows, Python 3.10 oder neuer (im Installer "Add python.exe to PATH"
+ankreuzen) und ein Replay: Öffne in Dota 2 die Details eines Matches und klicke
+**Download replay**; es landet im Replay-Ordner von Dota
+(`...\dota 2 beta\game\dota\replays`), wo das Werkzeug es von selbst findet. Git ist
+nicht nötig. Neu auf der Kommandozeile? Lies zuerst [Bevor du anfängst](before-you-start.md).
 
 ```bash
-python -m pip install -e .                  # installs heat3d-dota-replay and gem-dota
-heat3d-dota-replay list                     # where Dota 2 saves replays, the ones there
-heat3d-dota-replay convert -o tables        # every replay there, as tables
+python -m pip install https://github.com/Holdi601/3DHeat-Ext-DotaReplay/archive/refs/tags/v0.1.0.zip
+heat3d-dota-replay list                     # wo Dota 2 Replays speichert, die Replays dort
+heat3d-dota-replay convert -o tables        # jedes Replay dort, als Tabellen
+heat3d-dota-replay convert 7123456789.dem -o tables   # oder ein Replay
 ```
 
-`list` zeigt den Replay-Ordner von Dota und eine Zeile pro Replay; `convert` zeigt die zwei
-Dateien, die es für jedes geschrieben hat, `tables/<match>.parquet` und
-`tables/<match>.match.json`. Öffne die `.parquet` im Viewer mit **Dateien…** oder indem du sie auf
-das Fenster ziehst ([Konvertieren](convert.md#loading-it-in-the-viewer)).
+pip installiert auch gem-dota, den Replay-Parser, mit dem das Werkzeug liest. Dota 2
+außerhalb deiner Steam-Bibliotheken: `--game "<...>\dota 2 beta"` anhängen. `list` zeigt
+den Replay-Ordner von Dota und eine Zeile pro Replay; `convert` schreibt je Replay, nach
+seiner Match-ID benannt, `tables\<match>.parquet` (die Tabelle zum Öffnen),
+`tables\<match>.match.json` und die Nebentabellen ([Konvertieren](convert.md)). Ein
+langes Match dauert ein bis zwei Minuten und braucht etwa ein Gigabyte Speicher.
+
+Dann öffne die `.parquet` im [3DHeat-Viewer](https://github.com/Holdi601/3DHeat#quick-start):
+herunterladen (**Code -> Download ZIP**, entpacken), `start.bat` doppelklicken (es bietet
+an, Node.js zu installieren, wenn es fehlt, und öffnet `http://127.0.0.1:5273`), dann
+**Quelle -> Dateien...**, die Datei wählen (oder sie auf das Quelle-Panel ziehen) und
+**Datei laden** klicken ([Konvertieren](convert.md#loading-it-in-the-viewer)). Die Dota-2-Karte in 3D darunter:
+[3DHeat-Ext-Dota](https://holdi601.github.io/3DHeat-Ext-Dota/).
+
+Wenn ein neues Release erscheint, sagt das Werkzeug es beim Start und bietet an, sich
+selbst zu aktualisieren (`python -m heat3d_ext_dota_replay.update` macht dasselbe).
 
 ## Seiten {#pages}
 
