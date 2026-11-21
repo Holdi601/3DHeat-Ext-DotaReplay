@@ -27,15 +27,18 @@ def steam_root() -> Path | None:
 
 def steam_libraries() -> list[Path]:
     """Every Steam library's `steamapps/common`, from `libraryfolders.vdf`."""
+    from .app import paths
+
+    # Every Steam this user has (native, flatpak, Steam Deck, macOS), then the usual one.
+    found = list(paths.steam_libraries())
     root = steam_root()
-    if root is None:
-        return []
-    found = [root]
-    try:
-        text = (root / "steamapps" / "libraryfolders.vdf").read_text(encoding="utf-8", errors="replace")
-        found += [Path(m.replace("\\\\", "\\")) for m in re.findall(r'"path"\s+"([^"]+)"', text)]
-    except OSError:
-        pass
+    if root is not None:
+        found.append(root)
+        try:
+            text = (root / "steamapps" / "libraryfolders.vdf").read_text(encoding="utf-8", errors="replace")
+            found += [Path(m.replace("\\\\", "\\")) for m in re.findall(r'"path"\s+"([^"]+)"', text)]
+        except OSError:
+            pass
     out, seen = [], set()
     for lib in found:
         common = lib / "steamapps" / "common"

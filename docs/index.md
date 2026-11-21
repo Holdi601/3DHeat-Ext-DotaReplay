@@ -24,6 +24,32 @@ licence file, releases and issue tracker, so it can be installed, updated,
 maintained - or withdrawn on a rights holder's request - on its own, without
 affecting the viewer or the other tools.
 
+## The standalone program (no Python needed)
+
+Each [release](https://github.com/Holdi601/3DHeat-Ext-DotaReplay/releases/latest)
+has a ready-to-run program for Windows (`heat3d-dota-replay-<version>-windows-x64.zip`),
+Linux (`...-linux-x64.tar.gz`, also for Steam Deck) and macOS (`...-macos-arm64.tar.gz`),
+with a `SHA256SUMS` file to check the download. Unpack it anywhere and start
+`heat3d-dota-replay` (on macOS the first start may need *Open* from the
+right-click menu, as the program is not notarised).
+
+Started without arguments it opens a window that:
+
+- finds your Dota 2 install (Steam on any system, also flatpak and Steam
+  Deck), or lets you choose its folder;
+- says what is missing: the game, free disk space;
+- converts a folder of replays - by default the game's own replays folder
+  (`game/dota/replays` in the install) - into a folder of matches (by default
+  `%LOCALAPPDATA%\3DHeat\matches\dota` on Windows and
+  `~/.local/share/3dheat/matches/dota` elsewhere);
+- checks for updates and asks before installing one, unless you tick
+  *Update automatically*.
+
+The same program runs every command below: `heat3d-dota-replay list`,
+`heat3d-dota-replay convert <replays> -o <folder>`. For scripts:
+`heat3d-dota-replay --check --json` says what is found and missing.
+The 3DHeat app's Extractors panel installs, updates and starts it for you.
+
 ## Quick start
 
 You need Windows, Python 3.10 or later ("Add python.exe to PATH" ticked in its

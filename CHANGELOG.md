@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0
+
+- A standalone program for Windows, Linux and macOS (no Python needed), built by CI with a `SHA256SUMS` file.
+  Without arguments it opens a window: what is found and what is missing (install, disk space), and the
+  conversion of a folder of replays (the game's replays folder by default), and updates. `--check --json`,
+  `status --json` and `extract` answer as every 3DHeat extractor does; a replay reader has no maps.
+- Updates ask first (update now / later / skip this version) unless automatic updates were chosen
+  (`--auto-update`, the window's checkbox, or `HEAT3D_AUTO_UPDATE=1`).
+- The install is also found in Steam libraries on Linux (native, flatpak, Steam Deck) and macOS.
+
 ## 0.1.0
 
 - First version, moved out of the 3DHeat Watcher (its `dota-replays` adapter and

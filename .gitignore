@@ -12,3 +12,6 @@ dist/
 *.match.json
 .claude/
 *.jsonl
+
+# Standalone builds.
+dist-standalone/

@@ -1,0 +1,10 @@
+{
+  "spec": "heat3d_ext_dota_replay.standalone_spec",
+  "collect": ["gem"],
+  "collect_submodules": ["numpy", "pyarrow"],
+  "platforms": {
+    "windows-x64": {"build": true, "tested": false, "note": "replays; CI builds and smoke-runs"},
+    "linux-x64": {"build": true, "tested": false, "note": "native and flatpak Steam installs (Steam Deck too) found; CI builds and smoke-runs"},
+    "macos-arm64": {"build": true, "tested": false, "note": "Steam installs found; CI builds and smoke-runs"}
+  }
+}

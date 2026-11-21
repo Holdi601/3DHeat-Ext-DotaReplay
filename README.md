@@ -22,6 +22,18 @@ and issue tracker, so it can be installed, updated, maintained - or withdrawn on
 a rights holder's request - on its own, without affecting the viewer or the
 other tools. The tables this tool writes stay on your machine.
 
+## The standalone program
+
+No Python needed: download the file for your system (Windows, Linux incl. Steam Deck, macOS) from the
+[latest release](https://github.com/Holdi601/3DHeat-Ext-DotaReplay/releases/latest), check it against
+`SHA256SUMS`, unpack it and start `heat3d-dota-replay`. Its window finds your Dota 2 install and its replays
+folder, says what is missing, converts a folder of replays, and asks before it updates itself.
+`heat3d-dota-replay --help` lists its commands (every command below runs through it too, e.g.
+`heat3d-dota-replay convert <replays> -o <folder>`). `heat3d-dota-replay --check --json` says what is found;
+`status --json` and `extract` report that a replay reader has no maps. The 3DHeat app's Extractors panel can
+install and update it for you. See the
+[documentation](https://holdi601.github.io/3DHeat-Ext-DotaReplay/#the-standalone-program-no-python-needed).
+
 ## Quick start for new users
 
 You need: Windows, [Python](https://www.python.org/downloads/) 3.10 or later
