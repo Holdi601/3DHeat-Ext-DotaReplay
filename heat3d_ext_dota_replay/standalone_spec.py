@@ -11,7 +11,7 @@ from pathlib import Path
 
 from . import __version__
 from .app import paths
-from .app.spec import GameSpec, Input, Spec, Task, game_folders
+from .app.spec import GameSpec, Input, Replays, Spec, Task, game_folders
 
 #: The install's folder name in a Steam library.
 STEAM_FOLDER = "dota 2 beta"
@@ -43,6 +43,12 @@ def _replays(levels: Path) -> str:
     folder = game / "game" / "dota" / "replays" if game else None
     return str(folder) if folder and folder.is_dir() else ""
 
+def _replay_info(path: Path) -> dict:
+    """`info <replay> --json`: the header only (replay_info.py)."""
+    from .replay_info import info
+
+    return info(path)
+
 
 SPEC = Spec(
     id="heat3d-dota-replay",
@@ -65,6 +71,7 @@ SPEC = Spec(
         help="each replay becomes the tables of one match the viewer opens",
     )],
     min_free_gb=2.0,
+    replays=Replays("dota", (".dem",), lambda r, out: ["heat3d-dota-replay", "convert", str(r), "-o", str(out)], info=_replay_info),
     notice="Not affiliated with or endorsed by Valve Corporation.",
 )
 
